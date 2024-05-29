@@ -1,10 +1,10 @@
 "use client";
-import React, { useRef } from "react";
-import { Card } from "./ui/card";
-import { useRouter } from "next/navigation";
-import { HTML_TO_IMAGE } from "@/app/utils/HTMLTOIMAGE";
-import { useDispatch } from "react-redux";
 import { setBaseUrl } from "@/app/redux/features/imgSlice";
+import { HTML_TO_IMAGE } from "@/app/utils/HTMLTOIMAGE";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { Card } from "./ui/card";
 
 import { AppDispatch } from "@/app/redux/store";
 
@@ -23,7 +23,7 @@ const Frame = (props: Props) => {
     try {
       route.push("/frames/jdhfdh");
       const data = await HTML_TO_IMAGE(ref);
-      console.log(data);
+
       dispatch(setBaseUrl(data));
     } catch (error) {
       console.log(error);
