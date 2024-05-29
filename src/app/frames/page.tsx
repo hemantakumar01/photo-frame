@@ -72,7 +72,6 @@ const Page = (props: Props) => {
             borderStyle="groove"
             borderWidth="15px"
           />
-          <div _ngcontent-my-app-c292="" class="frame" style="border-width: 10.9375px; border-image: url(&quot;https://content.mahattaart.com/products/whole_frame_image_MA-EV-369-4.jpg&quot;) 60 / 1 / 0 stretch; border-style: solid;"><div _ngcontent-my-app-c292="" style="padding: 0px;"><div _ngcontent-my-app-c292="" style="padding: 0px;"><div _ngcontent-my-app-c292="" style="padding: 0px;"><img _ngcontent-my-app-c292="" alt="" src="https://content.mahattaart.com/image_upload/image1716916048_Pasport.jpg.jpeg" style="max-height: 328.125px; width: 277.083px;"></div></div></div></div>
         </div>
       )}
     </section>
