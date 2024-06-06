@@ -1,12 +1,11 @@
 "use client";
 import Frame from "@/components/Frame";
+import { Skeleton } from "@/components/ui/skeleton";
 import axios from "axios";
 import { Upload } from "lucide-react";
 import { useEffect, useState } from "react";
 import EditImage from "../editImage/EditImage";
 import { useAppSelector } from "../redux/store";
-import Spinner from "@/components/Spinner";
-import { Skeleton } from "@/components/ui/skeleton";
 type Props = {};
 
 const Page = (props: Props) => {

@@ -1,4 +1,7 @@
 "use client";
+import ChangeFrame from "@/app/changeFrame/ChangeFrame";
+import EditImage from "@/app/editImage/EditImage";
+import { useAppSelector } from "@/app/redux/store";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -7,27 +10,32 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Slider } from "@/components/ui/slider";
-import { Edit2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Upload } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
-import { useAppSelector } from "@/app/redux/store";
-import EditImage from "@/app/editImage/EditImage";
-import ChangeFrame from "@/app/changeFrame/ChangeFrame";
-import { frame1, frame2 } from "@/app/frameData";
-import { useParams } from "next/navigation";
-import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
+import axios from "axios";
+import { Edit2, Upload } from "lucide-react";
+import Link from "next/link";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 type Props = {};
 
 const Page = (props: Props) => {
+  const whatsappLink = `https://wa.me/9395585260?text=${encodeURIComponent(
+    window.location.href
+  )}`;
+  if (typeof window !== "undefined") {
+    const width = window.innerWidth;
+    // Use window.innerWidth here
+  }
   const initialPadding = 18;
   const [padding, setPadding] = useState(initialPadding);
   const image = useAppSelector((state) => state.ImageReducer);
   const id = useParams().id;
+  const route = useRouter();
   const [frame, setFrame] = useState<any>(null);
+  const path = window.location.href;
+
   const getFrame = async () => {
     try {
       const { data } = await axios.get(`/api/newFrame/${id}`);
@@ -42,6 +50,9 @@ const Page = (props: Props) => {
   useEffect(() => {
     getFrame();
   }, []);
+  const handleBuyNow = async () => {
+    await route.push("/pages/checkout");
+  };
   return (
     <div>
       {frame ? (
@@ -162,35 +173,46 @@ const Page = (props: Props) => {
               </p>
             </div>
             <div className="actions flex gap-4 flex-col  items-center">
-              <Button className="w-full items-center gap-2" variant={"outline"}>
-                <FaWhatsapp className="text-xl bg-green-400 text-white p-[2px] rounded-sm" />{" "}
-                Buy on Whatsapp
+              <Link href={whatsappLink} className="w-full">
+                <Button
+                  className="w-full items-center gap-2"
+                  variant={"outline"}
+                >
+                  <FaWhatsapp className="text-xl bg-green-400 text-white p-[2px] rounded-sm" />{" "}
+                  Buy on Whatsapp
+                </Button>
+              </Link>
+              <Button className="w-full" onClick={handleBuyNow}>
+                Buy Now
               </Button>
-              <Button className="w-full">Buy Now</Button>
             </div>
           </div>
         </div>
       ) : (
-        <div className="p-3">
-          <Skeleton className="max-w-xs h-[400px]" />
-          <div className="">
-            <Skeleton className=" h-[30px] mt-2" />
-            <Skeleton className=" h-[20px] mt-2" />
-            <div className="flex items-center gap-5 mt-3">
-              <Skeleton className="h-5 w-[100px] " />
-              <Skeleton className="h-5 w-[120px] " />
+        <div className="">
+          <div className="p-3  sm:flex gap-6 sm:p-4 ">
+            <Skeleton className="min-w-xs h-[400px]  flex-1 w-full" />
+
+            <div className="flex-1">
+              <Skeleton className=" h-[30px] mt-2" />
+              <Skeleton className=" h-[20px] mt-2" />
+              <div className="flex items-center gap-5 mt-3">
+                <Skeleton className="h-5 w-[100px] " />
+                <Skeleton className="h-5 w-[120px] " />
+              </div>
+              <div className="flex items-center gap-5 mt-3">
+                <Skeleton className="h-5 w-[100px] " />
+                <Skeleton className="h-5 w-[120px] " />
+              </div>
+              <div className="flex items-center gap-5 mt-3">
+                <Skeleton className="h-5 w-[100px] " />
+                <Skeleton className="h-5 w-[120px] " />
+              </div>
+              <Skeleton className=" h-[30px] mt-2" />
+              <Skeleton className=" h-[20px] mt-2" />
             </div>
-            <div className="flex items-center gap-5 mt-3">
-              <Skeleton className="h-5 w-[100px] " />
-              <Skeleton className="h-5 w-[120px] " />
-            </div>
-            <div className="flex items-center gap-5 mt-3">
-              <Skeleton className="h-5 w-[100px] " />
-              <Skeleton className="h-5 w-[120px] " />
-            </div>
-            <Skeleton className=" h-[30px] mt-2" />
-            <Skeleton className=" h-[20px] mt-2" />
           </div>
+          <Skeleton className="h-[640px] mt-6" />
         </div>
       )}
 

@@ -17,9 +17,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <meta name="viewport" />
-      {/* content="width=device-width, user-scalable=no" */}
-      {/* louch-action */}
       <body className={inter.className}>
         <StoreProvider>{children}</StoreProvider>
       </body>
