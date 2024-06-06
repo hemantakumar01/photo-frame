@@ -1,0 +1,26 @@
+const frams = [
+  {
+    edage:
+      "https://content.mahattaart.com/products/L_frame_image_ML-123-BK.jpg",
+    frame:
+      "https://content.mahattaart.com/products/whole_frame_image_ML-123-BK.jpg",
+  },
+  {
+    edage:
+      "https://content.mahattaart.com/products/L_frame_image_ML-ST-12-BKG.jpg",
+    frame:
+      "https://content.mahattaart.com/products/whole_frame_image_ML-ST-12-BKG.jpg",
+  },
+  {
+    edage:
+      "https://content.mahattaart.com/products/L_frame_image_ML-151-SIL.jpg",
+    frame:
+      "https://content.mahattaart.com/products/whole_frame_image_ML-151-SIL.jpg",
+  },
+  {
+    edage:
+      "https://content.mahattaart.com/products/L_frame_image_ML-146-GD.jpg",
+    frame:
+      "https://content.mahattaart.com/products/whole_frame_image_ML-146-GD.jpg",
+  },
+];

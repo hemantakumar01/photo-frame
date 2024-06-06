@@ -27,3 +27,5 @@ export const UplodeImage = async (file: File, folder: string) => {
     console.log(error);
   }
 };
+
+export default cloudinary;

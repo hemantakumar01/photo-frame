@@ -1,53 +1,46 @@
 "use client";
-import { setBaseUrl } from "@/app/redux/features/imgSlice";
-import { HTML_TO_IMAGE } from "@/app/utils/HTMLTOIMAGE";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { Card } from "./ui/card";
-
-import { AppDispatch } from "@/app/redux/store";
 
 type Props = {
   src: string;
-  borderStyle: string;
-  borderWidth: string;
-  borderColour: string;
+  frameUrl: string;
+  borderImageSlice: string;
+  id: string;
 };
 
 const Frame = (props: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
   const ref = useRef<HTMLDivElement>(null);
   const route = useRouter();
-  const handleCard = async () => {
+  const handleCard = async (id: string) => {
     try {
-      route.push("/frames/jdhfdh");
-      const data = await HTML_TO_IMAGE(ref);
-
-      dispatch(setBaseUrl(data));
+      route.push(`/frames/${id}`);
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <Card className="p-2 cursor-pointer" onClick={handleCard}>
+    <Card
+      className="p-2 cursor-pointer max-w-[165px]"
+      onClick={() => handleCard(props.id)}
+    >
       <div ref={ref} className=" w-fit">
         <div
           style={{
-            borderStyle: props.borderStyle || "outset",
-            borderWidth: props.borderWidth || `10px`,
-            borderColor: props.borderColour || "black",
+            borderImageSource:
+              `url('${props.frameUrl}')` || "url('/frame.jpg')",
+            borderImageSlice: props.borderImageSlice || "73 70 70 66",
+            borderImageWidth: "15px",
+            borderImageRepeat: "stretch",
+            padding: "15px",
           }}
-          className="   bg w-[150px] h-[calc(1.414*150px)] relative border-[15px] border-red-800 border-solid p-[3px] border-ridge  flex items-center justify-center "
+          className="  w-[150px] h-[calc(1.414*150px)]"
         >
-          <div className=" absolute   w-[197px] h-[calc(1.414*197px)]  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  "></div>{" "}
           <img
-            src={
-              props.src ||
-              "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            }
+            src={props.src || "/frame5.jpg"}
             alt="Selected Image"
-            className="h-full w-full"
+            className="h-full w-full object-fill"
           />
         </div>
       </div>
