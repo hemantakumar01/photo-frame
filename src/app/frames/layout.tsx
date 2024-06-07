@@ -1,5 +1,5 @@
-import FilterDrawer from "@/components/FilterDrawer";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <Navbar />
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
