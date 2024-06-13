@@ -50,8 +50,8 @@ const Page = (props: Props) => {
   useEffect(() => {
     getFrame();
   }, []);
-  const handleBuyNow = async () => {
-    await route.push("/pages/checkout");
+  const handleBuyNow = () => {
+    route.push("/pages/checkout");
   };
   return (
     <div>
@@ -147,11 +147,13 @@ const Page = (props: Props) => {
               </p>
               <p className="flex items-center gap-1 text-sm">
                 <span>Image:</span>
-                <EditImage>
-                  <span className="px-3 cursor-pointer py-1 bg-primary flex items-center gap-1 text-white rounded-sm">
-                    <Upload size={15} /> change image
-                  </span>
-                </EditImage>
+
+                <Link
+                  href={"/pages/custumize"}
+                  className="px-3 cursor-pointer py-1 bg-primary flex items-center gap-1 text-white rounded-sm"
+                >
+                  <Upload size={15} /> change image
+                </Link>
               </p>
               <div className="py-3">
                 <input

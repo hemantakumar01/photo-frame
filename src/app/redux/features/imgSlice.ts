@@ -5,6 +5,7 @@ const slice = createSlice({
   initialState: {
     localURL: "",
     base64URL: "",
+    uplodedImage: [],
   },
   reducers: {
     setLocalUrl: (state, actions) => {
@@ -14,7 +15,10 @@ const slice = createSlice({
       console.log(actions.payload);
       state.base64URL = actions.payload;
     },
+    setUplodedImage: (state, actions) => {
+      state.uplodedImage = actions.payload;
+    },
   },
 });
-export const { setBaseUrl, setLocalUrl } = slice.actions;
+export const { setBaseUrl, setLocalUrl, setUplodedImage } = slice.actions;
 export default slice.reducer;

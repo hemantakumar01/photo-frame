@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { HTML_TO_IMAGE } from "./HTMLTOIMAGE";
 
 const ConvertToPNG = async () => {

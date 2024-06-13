@@ -17,7 +17,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { GridLoader } from "react-spinners";
 import { AppDispatch } from "../redux/store";
-import { setLocalUrl } from "../redux/features/imgSlice";
+import { setLocalUrl, setUplodedImage } from "../redux/features/imgSlice";
 type Props = {
   children: ReactElement;
 };
@@ -33,6 +33,7 @@ const EditImage = (props: Props) => {
       const { data } = await axios.get("/api/frame");
       if (data.success) {
         setImage(data.data);
+        dispatch(setUplodedImage(data.data));
       }
       setLoading(false);
     } catch (error) {

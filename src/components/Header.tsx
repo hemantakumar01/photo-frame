@@ -1,16 +1,18 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Hearder = () => {
   const [state, setState] = useState(false);
+  const router = useRouter();
   const setStateFalse = () => {
     setState(false);
   };
   // Replace javascript:void(0) paths with your paths
   const navigation = [
     { title: "Frames", path: "/frames" },
-    { title: "Integrations", path: "javascript:void(0)" },
+    { title: "custumize", path: "/pages/custumize" },
     { title: "Customers", path: "javascript:void(0)" },
     { title: "Pricing", path: "javascript:void(0)" },
   ];
@@ -83,11 +85,13 @@ const Hearder = () => {
           <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
             {navigation.map((item, idx) => {
               return (
-                <li key={idx} className="text-gray-700 hover:text-gray-900">
-                  <a href={item.path} className="block">
-                    {item.title}
-                  </a>
-                </li>
+                <Link
+                  href={item.path}
+                  key={idx}
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  <span className="block">{item.title}</span>
+                </Link>
               );
             })}
           </ul>

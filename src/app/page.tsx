@@ -1,9 +1,7 @@
 "use client";
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
-import { useWindowSize } from "react-hooks-window-size";
 export default function Home() {
-  const { width } = useWindowSize();
   return (
     <div className="">
       <HeroSection />
@@ -17,7 +15,6 @@ export default function Home() {
         >
           Mahattaart
         </Link>
-        <strong>{width}</strong>
       </main>
     </div>
   );
