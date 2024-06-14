@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { fabric } from "fabric";
+import EditImage from "@/app/editImage/EditImage";
+import { convertUrlToBase64 } from "@/app/helper/convertUrlToBase64";
+import { useAppSelector } from "@/app/redux/store";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -8,15 +9,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { convertUrlToBase64 } from "@/app/helper/convertUrlToBase64";
-import EditImage from "@/app/editImage/EditImage";
-import { ArrowBigRightDash, MoveRight, UploadIcon } from "lucide-react";
-import { useAppSelector } from "@/app/redux/store";
-import { IoClose } from "react-icons/io5";
-import { MdContrast } from "react-icons/md";
-import { ImBrightnessContrast } from "react-icons/im";
-import { RiContrastDropFill } from "react-icons/ri";
+import { fabric } from "fabric";
+import { MoveRight, UploadIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { ImBrightnessContrast } from "react-icons/im";
+import { MdContrast } from "react-icons/md";
+import { RiContrastDropFill } from "react-icons/ri";
 
 type Props = {};
 const size = 20;
@@ -101,17 +100,6 @@ const Page = (props: Props) => {
       canvasInstance.dispose();
     };
   }, [canvasBackground]);
-
-  const addRect = () => {
-    const rect = new fabric.Rect({
-      left: Math.random() * 400,
-      top: Math.random() * 400,
-      fill: "red",
-      width: 100,
-      height: 100,
-    });
-    canvas.add(rect);
-  };
 
   const addImage = async (img: string) => {
     try {
@@ -211,12 +199,9 @@ const Page = (props: Props) => {
           </div>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <canvas
-            className="   object-fill"
-            ref={canvasRef}
-            width={"350px"}
-            height={"474px"}
-          />
+          {canvasRef && (
+            <canvas ref={canvasRef} width={"350px"} height={"474px"} />
+          )}
         </div>
       </div>
     </div>
