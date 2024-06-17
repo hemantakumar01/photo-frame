@@ -48,7 +48,7 @@ const HeroSection = (props: Props) => {
       </div>
       <div>
         <img
-          src="https://cdn.printshoppy.com/image/catalog/v6/webp/desktop-stands/v2/wooden-desktop-stands/category-wooden-banner-d.webp"
+          src="/img/home-page.jpeg"
           alt="3 women looking at a laptop"
           className="object-cover w-full h-64 bg-gray-100 md:h-full"
           loading="lazy"

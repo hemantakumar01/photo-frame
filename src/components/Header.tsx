@@ -32,13 +32,31 @@ const Hearder = () => {
           : ""
       }`}
     >
+      <div className="bg-primary text-secondary flex items-center justify-around py-[5px]">
+        <div className="call flex items-center gap-1">
+          <p className="text-xs hidden sm:block">contact us:</p>
+          <div className="flex items-center gap-1">
+            <img src="/svg/phone.png" className="w-5" alt="" />
+            <p className="text-xs">9395585260</p>
+          </div>
+        </div>
+        <div className="social-links flex items-center gap-2">
+          <p className="text-xs hidden sm:block">we are available in:</p>
+          <div className=" flex items-center gap-2">
+            <img src="/svg/insta.png" className="w-4" alt="" />
+            <img src="/svg/faceboook.png" className="w-4" alt="" />
+            <img src="/svg/youtube.png" className="w-4" alt="" />
+            <img src="/svg/li.png" className="w-4" alt="" />
+          </div>
+        </div>
+      </div>
       <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
-        <div className="flex items-center justify-between py-5 md:block">
+        <div className="flex items-center justify-between md:block">
           <Link
-            className="bg-blue-600 text-white font-bold rounded-sm p-2"
+            className=" text-white font-bold rounded-sm flex items-center justify-center"
             href={"/"}
           >
-            Logo Here
+            <img src="/images/logo.png" className="h-[60px]" alt="" />
           </Link>
           <div className="md:hidden">
             <button

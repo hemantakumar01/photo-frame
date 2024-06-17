@@ -126,9 +126,9 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div className="flex-1 mt-16 space-y-6 justify-between sm:flex md:space-y-0">
+        <div className=" flex-1 mt-16 space-y-6 items-baseline flex-wrap gap-3 justify-between flex md:space-y-0">
           {footerNavs.map((item, idx) => (
-            <ul className="space-y-4 text-gray-600" key={idx}>
+            <ul className="space-y-4 text-gray-600  " key={idx}>
               <h4 className="text-gray-800 font-semibold sm:pb-2">
                 {item.label}
               </h4>
