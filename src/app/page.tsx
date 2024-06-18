@@ -1,9 +1,12 @@
 "use client";
 import HeroSection from "@/components/HeroSection";
 import Stats from "@/components/Stats";
+import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="">
       <HeroSection />
@@ -21,19 +24,24 @@ export default function Home() {
             </Link>
             <img
               src="/home-page/lord-vishnu.jpg"
+              loading="lazy"
               alt=""
               className=" h-[250px]  md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
             />
           </div>
-          <div className="relative flex items-center justify-center ">
+          <div
+            className="relative flex items-center justify-center "
+            onClick={() => router.push("/frames")}
+          >
             <Link
-              href={"/"}
+              href={"/frames"}
               className="absolute bottom-9 bg-[#ffffffa2] py-2 px-6 md:px-10 rounded-md font-bold text-xs md:text-base  "
             >
               Custum Uplode
             </Link>
             <img
               src="/home-page/uplode.jpg"
+              loading="lazy"
               alt=""
               className=" h-[250px] md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
             />
@@ -46,6 +54,7 @@ export default function Home() {
               Potrait
             </Link>
             <img
+              loading="lazy"
               src="/home-page/custum-frame.jpg"
               alt=""
               className=" h-[250px] md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
@@ -60,6 +69,7 @@ export default function Home() {
               Lord Ganesg
             </Link>
             <img
+              loading="lazy"
               src="/home-page/lord-ganesh.jpg"
               alt=""
               className=" h-[250px] md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
@@ -73,6 +83,7 @@ export default function Home() {
               Collage
             </Link>
             <img
+              loading="lazy"
               src="/home-page/collage.jpg"
               alt=""
               className=" h-[250px] md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
@@ -86,6 +97,7 @@ export default function Home() {
               Lagends
             </Link>
             <img
+              loading="lazy"
               src="/home-page/lagends.png"
               alt=""
               className=" h-[250px] md:h-[400px] hover:opacity- cursor-pointer hover:scale-105 transition-all duration-75"
@@ -95,17 +107,12 @@ export default function Home() {
       </div>
 
       <Stats />
-      <main className="flex min-h-screen flex-col items-center  p-24">
-        <Link href={"/frames"}>Images</Link>
-        <Link
-          href={
-            "https://mahattaart.com/product-customization?product=wall_art&product_type=framing&print_type=archival_standard&print_surface=39&image_size=7X7&image_id=307719&frame_code=MA-EV-426-4-BLGD&mount1_code=&mount2_code=&mount3_code=&mount1_size=0.5&mount2_size=0.5&mount3_size=0.5&glass_type=GLS_001&is_table_frame=0&filter=undefined"
-          }
-          target="_blank"
-        >
-          Mahattaart
-        </Link>
-      </main>
+      <div className="bg-[#82a6fc] py-8 relative">
+        <Button className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[10px] py-0 ">
+          Start Now
+        </Button>
+        <img loading="lazy" src="/home-page/HERO.jpg" alt="" />
+      </div>
     </div>
   );
 }
