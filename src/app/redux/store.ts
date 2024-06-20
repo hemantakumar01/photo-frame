@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ImageReducer from "./features/imgSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
+import cartSlice from "./features/cartSlice";
 export const makeStore = configureStore({
   reducer: {
     ImageReducer,
+    cartSlice,
   },
 });
 

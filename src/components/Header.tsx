@@ -1,7 +1,9 @@
 "use client";
+import { ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import ShoppingCart from "./ShoppingCart";
 
 const Hearder = () => {
   const [state, setState] = useState(false);
@@ -58,7 +60,16 @@ const Hearder = () => {
           >
             <img src="/images/logo.png" className="h-[60px]" alt="" />
           </Link>
+
           <div className="md:hidden">
+            <ShoppingCart>
+              <div className="relative cursor-pointer md:hidden mr-4">
+                <ShoppingCartIcon />
+                <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
+                  1
+                </span>
+              </div>
+            </ShoppingCart>
             <button
               className="menu-btn text-gray-500 hover:text-gray-800"
               onClick={() => setState(!state)}
@@ -114,6 +125,14 @@ const Hearder = () => {
             })}
           </ul>
           <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
+            <ShoppingCart>
+              <div className="relative cursor-pointer md:block hidden">
+                <ShoppingCartIcon />
+                <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
+                  1
+                </span>
+              </div>
+            </ShoppingCart>
             <Link
               href="/pages/login"
               className="block text-gray-700 hover:text-gray-900"
@@ -121,7 +140,7 @@ const Hearder = () => {
             >
               Log in
             </Link>
-            <a
+            <Link
               href="/pages/sign"
               className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
               onClick={setStateFalse}
@@ -139,7 +158,7 @@ const Hearder = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
