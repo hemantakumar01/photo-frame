@@ -21,11 +21,8 @@ const Frame = (props: Props) => {
     }
   };
   return (
-    <Card
-      className="p-2 cursor-pointer max-w-[165px]"
-      onClick={() => handleCard(props.id)}
-    >
-      <div ref={ref} className=" w-fit">
+    <Card className="p-2 cursor-pointer " onClick={() => handleCard(props.id)}>
+      <div ref={ref} className=" w-fit flex items-center justify-center">
         <div
           style={{
             borderImageSource:
@@ -35,7 +32,7 @@ const Frame = (props: Props) => {
             borderImageRepeat: "stretch",
             padding: "15px",
           }}
-          className="  w-[150px] h-[calc(1.414*150px)]"
+          className="  w-[130px] h-[calc(1.414*130px)] md:w-[160px] md:h-[calc(1.414*160px)]"
         >
           <img
             src={props.src || "/frame5.jpg"}

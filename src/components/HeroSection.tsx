@@ -8,7 +8,7 @@ const HeroSection = (props: Props) => {
       <div className="flex flex-col items-start justify-center px-4 md:py-24 py-4 lg:px-20">
         <span className="mb-3 text-white bg-blue-900 badge">Best Frame</span>
         <h1 className="mb-6 text-4xl font-bold leading-tight text-blue-900 md:text-4xl lg:text-5xl">
-          Great your custum frames i one place
+          Create your custum frames i one place
         </h1>
         <form className="w-full mb-6">
           <label className="sr-only">Your Email</label>

@@ -13,15 +13,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
+import { TabsContent, TabsList, TabsTrigger, Tabs } from "@/components/ui/tabs";
+
 import axios from "axios";
 import { Edit2, Upload } from "lucide-react";
 import Link from "next/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { FaWhatsapp } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -75,12 +76,12 @@ const Page = (props: Props) => {
   return (
     <div>
       {frame ? (
-        <div>
-          <div className="flex flex-col justify-center items-center md:flex-row ">
-            <div className="flex-1 flex items-center justify-center">
-              <Carousel className="w-full max-w-xs justify-center">
-                <CarouselContent className="items-center">
-                  <CarouselItem>
+        <div className="">
+          <div className="flex flex-col justify-center items-center md:flex-row  ">
+            <div className="flex-1 flex items-center justify-center  mx-auto">
+              <Carousel className=" max-w-xs justify-center mx-auto">
+                <CarouselContent className="w-full w ">
+                  <CarouselItem className="">
                     <div
                       style={{
                         borderImageSource: `url('${frame.frameUrl}')`,
@@ -172,12 +173,11 @@ const Page = (props: Props) => {
                 <p className="flex items-center gap-1 text-sm">
                   <span>Image:</span>
 
-                  <Link
-                    href={"/pages/custumize"}
-                    className="px-3 cursor-pointer py-1 bg-primary flex items-center gap-1 text-white rounded-sm"
-                  >
-                    <Upload size={15} /> change image
-                  </Link>
+                  <EditImage>
+                    <span className="px-3 cursor-pointer py-1 bg-primary flex items-center gap-1 text-white rounded-sm">
+                      <Upload size={15} /> change image
+                    </span>
+                  </EditImage>
                 </p>
                 <div className="py-3">
                   <input
@@ -215,7 +215,10 @@ const Page = (props: Props) => {
             </div>
           </div>
           <div className="text-center my-4">
-            <Tabs defaultValue="description" className="w-[350px] md:w-full ">
+            <Tabs
+              defaultValue="description"
+              className="max-w-[340px] md:max-w-full "
+            >
               <TabsList>
                 <TabsTrigger value="reviwe">Reviwe</TabsTrigger>
                 <TabsTrigger value="description">Description</TabsTrigger>

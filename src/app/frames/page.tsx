@@ -35,7 +35,7 @@ const Page = (props: Props) => {
       </EditImage>
 
       {frames ? (
-        <div className=" grid grid-cols-2  gap-2   sm:flex items-center md:gap-3 sm:flex-wrap justify-center p-1 mt-4">
+        <div className=" grid grid-cols-2  gap-2  sm:flex items-center md:gap-3 sm:flex-wrap justify-center p-1 mt-4">
           {(frames as []).map((e: any, index) => (
             <Frame
               src={localUrl}

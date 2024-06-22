@@ -60,7 +60,7 @@ const Hearder = () => {
             className=" text-white font-bold rounded-sm flex items-center justify-center"
             href={"/"}
           >
-            <img src="/images/logo.png" className="h-[60px]" alt="" />
+            <img src="/images/Logo.png" className="h-[60px]" alt="" />
           </Link>
 
           <div className="md:hidden">
