@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ShoppingCart from "./ShoppingCart";
+import { useAppSelector } from "@/app/redux/store";
 
 const Hearder = () => {
   const [state, setState] = useState(false);
   const router = useRouter();
+  const cart = useAppSelector((state) => state.cartSlice.cart);
   const setStateFalse = () => {
     setState(false);
   };
@@ -65,9 +67,11 @@ const Hearder = () => {
             <ShoppingCart>
               <div className="relative cursor-pointer md:hidden mr-4">
                 <ShoppingCartIcon />
-                <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
-                  1
-                </span>
+                {cart.length > 0 && (
+                  <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
+                    {cart.length}
+                  </span>
+                )}
               </div>
             </ShoppingCart>
             <button
@@ -128,9 +132,12 @@ const Hearder = () => {
             <ShoppingCart>
               <div className="relative cursor-pointer md:block hidden">
                 <ShoppingCartIcon />
-                <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
-                  1
-                </span>
+
+                {cart.length > 0 && (
+                  <span className="flex items-center justify-center rounded-full font-bold text-xs p-[2px] text-white bg-red-500 absolute -top-[10px] -right-[10px] w-5 h-5">
+                    {cart.length}
+                  </span>
+                )}
               </div>
             </ShoppingCart>
             <Link

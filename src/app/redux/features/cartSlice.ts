@@ -1,18 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+type cartItem = {
+  _id: string;
+  frameUrl: string;
+  imageUrl: string;
+  price: number;
+  quantity: number;
+  name: string;
+};
+type cartSliceType = {
+  total: number;
+  cart: cartItem[];
+};
+const initialState: cartSliceType = {
+  total: 0,
+  cart: [],
+};
 const cartSlice = createSlice({
-  initialState: {
-    total: 0,
-    cart: [
-      {
-        _id: "",
-        frameUrl: "",
-        imageUrl: "",
-        price: 0,
-        quantity: 0,
-      },
-    ],
-  },
+  initialState,
   name: "cartSlice",
   reducers: {
     addToCart: (state, action) => {
@@ -24,7 +28,13 @@ const cartSlice = createSlice({
       }
     },
     removeCart: (state, action) => {
-      state.cart = state.cart.filter((i) => i._id === action.payload._id);
+      console.log(action.payload._id);
+      const filteredCart = state.cart.filter(
+        (i) => i._id !== action.payload._id
+      );
+      // console.log(state.cart);
+      // console.log(filteredCart, "filterd");
+      state.cart = filteredCart;
     },
     calculateTotal: (state) => {
       state.total = state.cart.reduce(

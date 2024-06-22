@@ -1,27 +1,26 @@
 "use client";
-import React, { ReactElement } from "react";
+import { useAppSelector } from "@/app/redux/store";
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "./ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import CartItem from "./CartItem";
-import { Cross } from "lucide-react";
-import { FaCross } from "react-icons/fa";
+import { ReactElement } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import CartItem from "./CartItem";
+import { Button } from "./ui/button";
 
 type Props = {
   children: ReactElement;
 };
 
 const ShoppingCart = (props: Props) => {
+  const cartReducer = useAppSelector((state) => state.cartSlice);
+
   return (
     <Drawer direction="left">
       <DrawerTrigger>{props.children}</DrawerTrigger>
@@ -32,37 +31,17 @@ const ShoppingCart = (props: Props) => {
           </Button>
         </DrawerClose>
         <DrawerHeader>Cart</DrawerHeader>
-        <ScrollArea>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+        <ScrollArea className=" ">
+          {cartReducer?.cart.map((item, idx) => (
+            <CartItem key={idx} {...item} />
+          ))}
         </ScrollArea>
         <DrawerFooter>
+          <div className="flex items-center justify-between">
+            <h4 className="text-xl font-semibold">Total</h4>
+            <h4 className="text-xl font-semibold">₹{cartReducer?.total}</h4>
+          </div>
+          <hr />
           <Button>Checkout</Button>
         </DrawerFooter>
       </DrawerContent>

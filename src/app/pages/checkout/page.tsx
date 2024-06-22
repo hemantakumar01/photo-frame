@@ -1,12 +1,15 @@
 "use client";
+import { useAppSelector } from "@/app/redux/store";
+import CartItem from "@/components/CartItem";
 import { Button } from "@/components/ui/button";
-import { Trash } from "lucide-react";
 import Script from "next/script";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
+  const cartReducer = useAppSelector((state) => state.cartSlice);
+
   const createOrderId = async () => {
     try {
       const response = await fetch("/api/order", {
@@ -29,6 +32,7 @@ const Page = (props: Props) => {
       console.error("There was a problem with your fetch operation:", error);
     }
   };
+
   const processPayment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -89,44 +93,17 @@ const Page = (props: Props) => {
         <form onSubmit={processPayment}>
           <div className="flex flex-col md:flex-row gap-8 p-2 md:p-6">
             <div className="flex-1 border-y-2">
-              <div className="flex items-start justify-between">
-                <div className="img flex gap-2 p-2">
-                  <img
-                    src="https://storeassets.im-cdn.com/media-manager/framtastic/YXYZUpiRQNy5oMBCDwiQ_IMG_20210617_133537.jpg"
-                    alt=""
-                    className="h-[70px]"
-                    loading="lazy"
-                  />
-                  <div className="">
-                    <p className="text-ellipsis overflow-hidden text-nowrap  w-[100px] text-xs md:text-base">
-                      Lord Vishnu photo frame
-                    </p>
-                    <strong className="text-red-400 text-sm">₹500</strong>
-                  </div>
-                </div>
-                <div className="flex p-3 flex-col  justify-end gap-2">
-                  <div className="flex justify-end text-xs">
-                    <Trash className="text-xs " size={20} />
-                  </div>
-                  <div className="quantity flex items-center  ">
-                    <p className="flex items-center justify-center md:py-1 md:px-4 py-[2px] px-[6px] border ">
-                      -
-                    </p>
-                    <p className="flex items-center justify-center md:py-1 md:px-4 py-[2px] px-[6px] ">
-                      1
-                    </p>
-                    <p className="flex items-center justify-center md:py-1 md:px-4 py-[2px] px-[6px] border ">
-                      +
-                    </p>
-                  </div>
-                </div>
+              <div className="flex flex-col gap-2 items-start justify-between">
+                {cartReducer?.cart.map((item, idx) => (
+                  <CartItem key={idx} {...item} />
+                ))}
               </div>
             </div>
             <div className="border-2 p-7 md:w-[340px] space-y-3">
               <h3 className=" font-light">Order Summerey</h3>
               <div className="flex text-sm items-center justify-between">
                 <span>subtotal(1 item)*</span>
-                <span>₹299</span>
+                <span>₹{cartReducer.total}</span>
               </div>
               <div className="flex items-center text-sm justify-between">
                 <span>Shipping</span>
@@ -135,7 +112,7 @@ const Page = (props: Props) => {
               <hr />
               <div className="flex  font-bold items-center justify-between">
                 <span>Order Total</span>
-                <span>₹299</span>
+                <span>₹{cartReducer.total}</span>
               </div>
             </div>
           </div>

@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -57,7 +58,7 @@ const Page = (props: Props) => {
   }, []);
   const handleBuyNow = async () => {
     const data = await HTML_TO_IMAGE(imageRef);
-    console.log(data);
+
     dispatch(
       addToCart({
         _id: frame?._id,
@@ -65,9 +66,11 @@ const Page = (props: Props) => {
         imageUrl: `${data}`,
         price: frame?.price,
         quantity: 1,
+        name: frame.name,
       })
     );
-    // route.push("/pages/checkout");
+    toast.success("Added to card");
+    route.push("/pages/checkout");
   };
   return (
     <div>
@@ -212,7 +215,7 @@ const Page = (props: Props) => {
             </div>
           </div>
           <div className="text-center my-4">
-            <Tabs defaultValue="description" className="w-[400px] md:w-full ">
+            <Tabs defaultValue="description" className="w-[350px] md:w-full ">
               <TabsList>
                 <TabsTrigger value="reviwe">Reviwe</TabsTrigger>
                 <TabsTrigger value="description">Description</TabsTrigger>
